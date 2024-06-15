@@ -1,0 +1,464 @@
+@charset "utf-8";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(164, 140, 192);
+    font-family: "Josefin Sans", sans-serif;
+
+    .pagetitle, .shorttitle, h2, h3 {
+        font-family: "Pirata One", system-ui;
+    }
+
+    h2, h3 {
+        color: rgb(70, 6, 131);
+        font-weight: lighter;
+    }
+
+    a {
+        text-decoration: none;
+        color: rgb(70, 6, 131);
+
+        :hover, :focus {
+            font-weight: bold;
+        }
+    }
+
+    a:hover, a:focus {
+        font-weight: bold;
+    }
+
+    p {
+        line-height: 140%;
+    }
+}
+
+.pagecontainer {
+    display: grid;
+    grid:
+        [row1-start] "header" 10vh [row1-end]
+        [row2-start] "main" auto [row2-end]
+        [row3-start] "footer" 100vh [row3-end]
+        / 100%;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    grid-area: header;
+
+    nav {
+        background-color: rgb(164, 140, 192);
+        position: fixed;
+        z-index: 1;
+
+        ul {
+            display: flex;
+            justify-content: flex-end;
+            list-style: none;
+            padding: 1rem 2rem 1rem 1rem;
+            width: 100vw;
+    
+            .pagetitle {
+                margin-right: auto;
+                margin-left: 1rem;
+                padding: 0;
+                font-size: 2.5rem;
+                width: fit-content;
+            }
+
+            .shorttitle {
+                display: none;
+            }
+        }
+    
+        li {
+            padding: 1.3rem 0;
+            cursor: pointer;
+            color: rgb(70, 6, 131);
+            text-align: center;
+            width: 100px;
+
+            :hover, :focus {
+                font-weight: bold;
+            }
+        }
+
+        @media only screen and (max-width: 630px) {
+        
+            ul {
+                justify-content: center;
+        
+                .pagetitle {
+                    display: none;
+                }
+
+                .shorttitle {
+                    display: block;
+                    font-size: 2.5rem;
+                    padding: 0;
+                }
+            }
+        }
+    }
+}
+
+main {
+    grid-area: main;
+    display: grid;
+    grid:
+        [row1-start] "banner" 90vh [row1-end]
+        [row2-start] "about" 115vh [row2-end]
+        [row3-start] "projects" 90vh [row3-end]
+        [row4-start] "portfolio" auto [row4-end]
+        / 100%;
+
+        @media only screen and (max-width: 450px) {
+            grid:
+            [row1-start] "banner" 90vh [row1-end]
+            [row2-start] "about" 115vh [row2-end]
+            [row3-start] "projects" 100vh [row3-end]
+            [row4-start] "portfolio" auto [row4-end]
+            / 100%;
+        }
+
+        @media only screen and (max-width: 395px) {
+            grid:
+            [row1-start] "banner" 90vh [row1-end]
+            [row2-start] "about" 115vh [row2-end]
+            [row3-start] "projects" 140vh [row3-end]
+            [row4-start] "portfolio" auto [row4-end]
+            / 100%;
+        }
+
+    h1 {
+        font-weight: 400;
+    }
+
+    .banner {
+        grid-area: banner;
+        background-image: 
+            linear-gradient(to bottom, 
+                rgb(164, 140, 192), 
+                rgba(164, 140, 192, 0) 50%,
+                rgb(164, 140, 192)), 
+            url(images/Tests\ \(3\ of\ 4\).jpg);
+
+        background-size: cover;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+
+    .about {
+        grid-area: about;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 70vw;
+        margin: auto;
+        padding: 2rem;
+
+        h1 {
+            font-size: 2rem;
+            margin: 0.5rem 0;
+        }
+
+        img {
+            object-fit: cover;
+            width: 150rem;
+            border-radius: 3rem;
+            height: 70vh;
+            margin: 1.5rem;
+            top: 0;
+        }
+
+        .aboutcard {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cardtext {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        @media only screen and (max-width: 1460px) {
+            width: 90vw;
+
+            img {
+                width: 120rem;
+            }
+        }
+
+        @media only screen and (max-width: 1000px) {
+            img {
+                height: 50vh;
+            }
+        }
+
+        @media only screen and (max-width: 730px) {
+            padding: 0;
+
+            img {
+                height: 40vh;
+            }
+        }
+
+        @media only screen and (max-width: 650px) {
+            height: 110vh;
+            
+            .aboutcard {
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            img {
+                height: 20vh;
+                width: 20vh;
+                border-radius: 50%;
+                margin: auto;
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            p {
+                padding: 1rem;
+            }
+        }
+
+        @media only screen and (max-width: 395px) {
+
+            height: 110vh;
+
+            p {
+                padding: 0.5rem;
+            }
+        }
+    }
+
+    .projects {
+        grid-area: projects;
+        margin: 0 30%;
+        padding-top: 7rem;
+
+        h1 {
+            padding-bottom: 25px;
+            text-align: center;
+        }
+
+        p {
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        i {
+            font-size: 16px; 
+            padding: 0 0 1px 6px;
+        }
+        
+        @media only screen and (max-width: 1240px) {
+            margin: 0 3rem;
+        }
+
+        @media only screen and (max-width: 630px) {
+            margin: 0 1.5rem;
+        }
+    }
+
+    .portfolio {
+        grid-area: portfolio;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80vw;
+        margin: auto;
+        gap: 2rem;
+
+        .portfolioheader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        #portfolionav {
+            text-align: center; 
+            padding: 0 1rem;
+
+            @media only screen and (min-width: 740px) {
+                br {
+                    display: none;
+                }
+            }
+        }
+
+        .design, .photovideo, .datavis {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-top: 4rem;
+
+            .slideshowcontainer {
+                position: relative;
+                width: 100%;
+                margin: auto;
+                height: 60vh;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                margin-bottom: 1rem;
+
+                img {
+                    width: 100%;
+                    object-fit: cover;
+                }
+
+                .slide {
+                    display: none;
+                }
+            
+                .prev, .next {
+                    cursor: pointer;
+                    position: absolute;
+                    top: 50%;
+                    width: auto;
+                    margin-top: -22px;
+                    padding: 16px;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 30px;
+                    transition: 0.5s ease;
+                    border-radius: 0 3px 3px 0;
+                    user-select: none;
+                }
+                  
+                .next {
+                    right: 0;
+                    border-radius: 3px 0 0 3px;
+                }
+                  
+                .prev:hover, .next:hover {
+                    background-color: rgb(70, 6, 131, 0.5);
+                }
+                  
+                .caption {
+                    color: #f2f2f2;
+                    padding: 1rem;
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                    text-align: center;
+                    background-color: rgb(70, 6, 131, 0.5);
+                }
+                  
+                .slidenumber {
+                    color: #f2f2f2;
+                    padding: 8px 12px;
+                    position: absolute;
+                    top: 0;
+                    background-color: rgb(70, 6, 131, 0.5);
+                }
+
+                .caption, .slidenumber {
+                    font-weight: 300;
+                    font-size: 18px;
+                }
+                
+                .fade {
+                    animation-name: fade;
+                    animation-duration: 1.5s;
+                }
+
+                @media only screen and (min-width: 1460px) {
+                    width: 70%;
+                }
+            }
+
+            .sectionheader {
+                width: 100%;
+                font-size: 1.5rem;
+                margin: 2rem 0;
+                display: block;
+            }
+        }
+
+        .design {
+            .imagegallery {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .imagecard {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                gap: 1rem;
+
+                h4 {
+                    font-size: 1.25rem;
+                    font-weight: 500;
+                    margin: 1rem 0;
+                    display: block;
+                    width: 100%;
+                }
+
+                img {
+                    margin: 0 0 1rem 0;
+                    padding: 0;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    grid-area: footer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+
+    ul {
+        text-align: center;
+        
+        li {
+            margin-bottom: 0.75rem;
+            list-style: none;
+
+            i {
+                padding: 0.25rem 1rem;
+                font-size: 1.75rem;
+            }
+
+            a:hover i, a:focus i {
+                transform: scale(1.2);
+            }
+        }
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+}
